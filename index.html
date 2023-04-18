@@ -16,6 +16,7 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script defer src="./assets/js/script.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
@@ -23,7 +24,7 @@
       <header>PRESUPUESTO APP</header>
       <main>
         <section id="column1">
-          <section
+          <form
             class="card bg-success-subtle border-success border-2"
             id="budget-card"
           >
@@ -36,9 +37,9 @@
               id="budget"
               class="form-control bg-success-subtle border-success"
             />
-            <button type="submit" class="btn btn-success">Calcular</button>
-          </section>
-          <section
+            <button type="submit" class="btn btn-success" id="budget-btn">Calcular</button>
+          </form>
+          <form
             class="card bg-danger-subtle border-danger border-2"
             id="expenses-card"
           >
@@ -60,8 +61,8 @@
               id="expenses-amount"
               class="form-control bg-danger-subtle border-danger"
             />
-            <button type="submit" class="btn btn-danger">Añadir Gasto</button>
-          </section>
+            <button type="submit" class="btn btn-danger" id="expenses-btn">Añadir Gasto</button>
+          </form>
         </section>
 
     
@@ -69,7 +70,7 @@
           <section class="d-flex justify-content-evenly text-center mt-3">
             <section>
               <article>Presupuesto</article>
-              <article>$ 0</article>
+              <article id="general-budget">$ 0</article>
             </section>
             <section>
               <article>Gastos</article>
@@ -81,7 +82,7 @@
             </section>
           </section>
 
-          <section class="p-2 mt-4">
+          <section class="p-2 mt-4" id="table-general">
             <section class="expenses-table d-flex" style="border-bottom: 2px solid black">
               <article class="expenses-table-kind">GASTO</article>
               <article class="expenses-table-expenses">VALOR</article>
