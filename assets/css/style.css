@@ -21,7 +21,11 @@ main {
 #column1 {
     width: 40%;
 }
+#general2 article {
+    font-size: 1.5rem;
+}
 #column2 {
+    margin-left: 40px;
     width: 60%;
     font-weight: bold;
 }
@@ -31,6 +35,21 @@ label{
 button {
     width: fit-content;
 }
+
 .expenses-table article{
-    width: 33%;
+    padding-left: 30px;
+    width: 33.33%;
+    height: 30px;
+    padding-top: 10px;
+}
+.expenses-table-kind, .expenses-table-expenses, .expenses-table-bin {
+    font-weight: 500;
+    border-bottom: 1px solid grey;
+}
+#reset {
+    text-align: center;
+    margin-top: 50px;
+}
+#reset button {
+    width: 250px;
 }
