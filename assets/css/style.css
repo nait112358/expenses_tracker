@@ -53,3 +53,22 @@ button {
 #reset button {
     width: 250px;
 }
+
+@media (width< 768px) {
+    header{
+        text-align: center;
+    }
+    main{
+        flex-direction: column;
+    }
+    #column1 {
+        width: 100%;
+        padding: 0 10px 0 10px;
+    }
+    #column2{
+        width: 100%;
+        margin-left: 0px;
+        padding: 0 10px 0 10px;
+        margin-top: 30px;
+    }
+}
