@@ -54,6 +54,9 @@ const balanceTracker = (expenses) => {
   let total = account[0] - expenses;
   account[2] = total;
   document.getElementById("general-budget").innerText = `$ ${account[2]}`;
+  if(account[2]< 0){
+    alert("Ha excedido su Presupuesto")
+  }
 };
 
 //create random ID for my objects without repeating itself
