@@ -1,4 +1,4 @@
-let expenses = [];
+let expenses = []; //array of object with input data expenses
 let account = [0, 0, 0]; // initial, expenses, total
 //getting and validating budget
 document.getElementById("budget-btn").addEventListener("click", (e) => {
@@ -10,12 +10,10 @@ document.getElementById("budget-btn").addEventListener("click", (e) => {
     document.getElementById("budget-card").reset();
     account[0] = initialBudget;
     account[2] = initialBudget;
-    console.log(account);
   } else {
     alert("solo puede ingresar numeros enteros positivos");
   }
 });
-
 //getting and validating expenses
 const expensesForm = document.getElementById("expenses-card");
 document.getElementById("expenses-btn").addEventListener("click", (e) => {
@@ -24,6 +22,9 @@ document.getElementById("expenses-btn").addEventListener("click", (e) => {
   let regex = /^(?:[1-9]\d*|\d)$/;
   if (document.getElementById("initial-budget").innerText == "$ 0") {
     return alert("Por Favor ingrese primero su presupuesto");
+  }
+  if (document.getElementById("expenses-name").value == "") {
+    return alert("Por Favor ingrese el nombre del gasto");
   }
   if (regex.test(expensesItem) == true) {
     //if input ok get info from form
@@ -35,7 +36,6 @@ document.getElementById("expenses-btn").addEventListener("click", (e) => {
     document.getElementById("expenses-card").reset();
     expensesTracker(expenses);
     balanceTracker(account[1]);
-    console.log(account);
   } else {
     alert("solo puede ingresar numeros enteros positivos");
   }
@@ -47,7 +47,6 @@ const expensesTracker = (arr) => {
     .reduce((a, b) => a + b, 0);
   document.getElementById("general-expenses").innerText = `$ ${sumExpenses}`;
   account[1] = sumExpenses;
-  console.log(account);
 };
 
 // updating balance after expense its passed
@@ -55,7 +54,6 @@ const balanceTracker = (expenses) => {
   let total = account[0] - expenses;
   account[2] = total;
   document.getElementById("general-budget").innerText = `$ ${account[2]}`;
-  console.log(account);
 };
 
 //create random ID for my objects without repeating itself
@@ -77,7 +75,7 @@ const createRow = (kind, amount, id) => {
   let newSection = document.createElement("section");
   newSection.setAttribute("class", "expenses-table d-flex");
   newSection.setAttribute("id", `identifier${id}`);
-  //creating articles
+  //creating articles + bin icon
   let articles = `<article class="expenses-table-kind">${kind}</article>
     <article class="expenses-table-expenses" id="b${id}">$ ${amount}</article>
     <article class="expenses-table-bin pt-2"><a href="#" class="text-decoration-none" id="a${id}" onCLick="binBtn(this.id);">
@@ -98,7 +96,6 @@ const binBtn = (clicked_id) => {
   let properID = `identifier${idForUse}`;
   binTracker(idForDelete, account[2], account[1]); //updating balance and expenses
   removeObj(expenses, idForUse);
-  console.log(expenses);
   document.getElementById(properID).outerHTML = "";
 };
 //updating balance after bin is used
@@ -113,7 +110,6 @@ function binTracker(id, initialBudget, sumExpenses) {
 
 //removing object targeted in bin
 const removeObj = (arr, idNumb) => {
-  console.log(idNumb);
   let index = arr.findIndex((object) => {
     return object.id == idNumb;
   });
