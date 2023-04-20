@@ -48,9 +48,10 @@ const random = () => {
 };
 //balance calculator
 const expensesTracker = (arr, expAmo) => {
-  let sumExpenses = arr
-    .map((element) => parseInt(element.expense))
-    .reduce((a, b) => a + b, 0); //sum of all gastos
+  let sumExpenses = 0;
+  arr.forEach((element) => {
+    sumExpenses += element.expense;
+  });
   account[0] = sumExpenses;
   account[1] = account[1] - expAmo;
   document.getElementById("general-expenses").innerText = `$ ${account[0]}`;
